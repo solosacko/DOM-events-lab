@@ -63,6 +63,29 @@ if (operator === undefined) {
 render ()
        console.log("num1 ", num1, "num2 ", num2);
 }
+// Goal: add an event listener to the equal button
+if(num1 && num2) {
+    equalBtnEl.forEach(equalBtnEl); {
+        equalBtnEl.addEventListener('click', updateOperator)
+        // let's assign a value forEach operator
+        equalBtnEl.forEach(equalBtnEl);
+        console.log(operator, "+", "-", "/", "*")
+        if ('operator' === "+")
+            console.log(add, 'num1' + 'num2')
+    }
+       if ('operator' === "-") {
+        console,log(subtract, 'num1' - 'num2')
+       }
+        if ('operator' === "/") {
+            console.log(divide, "num1"/"num2")
+        }
+        if ('operator' === "*") {
+            console.log(multiply, 'num1' * 'num2')
+        }
+       }
+    
+     
+
 
 // event handler -
 

@@ -38,23 +38,35 @@ const updateResult = () => {
 const updateNumbers = (event) => {
     console.log(event.target.textContent)
 
-// if I have the number (textContent) -> how do I update state?
-if (!num1) {
-    num1 = event.target.textContent
-}
-else {
-    num1 = num1+event.target.textContent
-}
+    
 
-
-//num1 = the current?
-// to take the current number (num1) -> update result
-  updateResult()
+// if the operator is undefined
+if (operator === undefined) {
+    if (num1 === undefined) {
+        num1 = event.target.textContent
+    
+    }
+    else {
+        
+        num1 = num1+event.target.textContent
+    
+    }
+    result = num1
+} else {
+    if (num2 === undefined) {
+        num2 = event.target.textContent
+       } else {
+        num2 = num2+event.target.textContent
+       }
+       result = num2
+}
+render ()
+       console.log("num1 ", num1, "num2 ", num2);
 }
 
 // event handler -
 
-numberBtnEls.forEach((numBtnEl)=>{
+numberBtnEls.forEach((numBtnEl)=> {
     // console.log(numBtnEl)
 
     // Goal: add an event listener to the button?
@@ -62,16 +74,12 @@ numberBtnEls.forEach((numBtnEl)=>{
 })
    // click handler for each group of elements
    // functionality will be tied to its button
-   render()
-
-   numberBtnEls.forEach((numBtnEl) => {
-    numBtnEl.addEventListener('click', updateNumbers)
-   })
 
    const updateOperator = (event) => {
     console.log(operatorBtnEls)
     operator = event.target.textContent
    }
 
- 
-   
+   operatorBtnEls.forEach((operatorBtnEl) => {
+    operatorBtnEl.addEventListener('click', updateOperator)
+   })

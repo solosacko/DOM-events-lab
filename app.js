@@ -12,10 +12,9 @@
     let result = 0
 // dom elements - 
 
-
 const numberBtnEls = document.querySelectorAll('.number');
 const operatorBtnEls = document.querySelectorAll('.operator');
-const equalBtnEl = document.querySelector('.equal');
+const equalBtnEl = document.querySelector('.equals');
 const displayEl = document.querySelector('.display')
 // buttons
     //   div.number
@@ -41,8 +40,8 @@ const updateNumbers = (event) => {
     
 
 // if the operator is undefined
-if (operator === undefined) {
-    if (num1 === undefined) {
+if (!operator) {
+    if (!num1) {
         num1 = event.target.textContent
     
     }
@@ -53,7 +52,7 @@ if (operator === undefined) {
     }
     result = num1
 } else {
-    if (num2 === undefined) {
+    if (!num2) {
         num2 = event.target.textContent
        } else {
         num2 = num2+event.target.textContent
@@ -64,29 +63,25 @@ render ()
        console.log("num1 ", num1, "num2 ", num2);
 }
 // Goal: add an event listener to the equal button
-if(num1 && num2) {
-    equalBtnEl.forEach(equalBtnEl); {
-        equalBtnEl.addEventListener('click', updateOperator)
-        // let's assign a value forEach operator
-        equalBtnEl.forEach(equalBtnEl);
-        console.log(operator, "+", "-", "/", "*")
-        if ('operator' === "+")
-            console.log(add, 'num1' + 'num2')
-    }
-       if ('operator' === "-") {
-        console,log(subtract, 'num1' - 'num2')
-       }
-        if ('operator' === "/") {
-            console.log(divide, "num1"/"num2")
-        }
-        if ('operator' === "*") {
-            console.log(multiply, 'num1' * 'num2')
-        }
-       }
-    
-     
 
-
+        equalBtnEl.addEventListener('click', (event) => {
+            // let's assign a value forEach operator
+            const number1 = Number(num1);
+            const number2 = Number(num2);
+            if (number1 && number2)
+                if(number1 && number2) {
+            if (operator === '+')
+                    result = (number1 + number2)
+            if (operator === '-') {
+                    result = (number1 - number2)
+            } if (operator === '/') {
+                    result = (number1 / number2)
+            } if (operator === '*') {
+                    result = (number1 * number2)
+            }
+        }
+            render()
+        })
 // event handler -
 
 numberBtnEls.forEach((numBtnEl)=> {
@@ -99,8 +94,16 @@ numberBtnEls.forEach((numBtnEl)=> {
    // functionality will be tied to its button
 
    const updateOperator = (event) => {
-    console.log(operatorBtnEls)
     operator = event.target.textContent
+    console.log(operator)
+    if (operator === 'C') {
+    num1 = '';
+    num2 = '';
+    operator = '';
+    result = 0;
+    render()
+    }
+    
    }
 
    operatorBtnEls.forEach((operatorBtnEl) => {
